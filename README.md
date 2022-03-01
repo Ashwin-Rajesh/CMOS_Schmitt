@@ -3,8 +3,21 @@ Analog design and simulation of a CMOS Schmitt trigger using synopsys custom des
 
 ---
 
-## Abstract
+## List of contents
 
+- Abstract
+- Introduction
+- Tools used
+- Circuit design
+- Implementation
+- Netlist
+- Results
+- Conclusion
+- Acknowledgements
+
+---
+
+## Abstract
 
 A Schmitt trigger is used for converting analog value to a binary value, but reducing noise compared to a simple comparator. Here, a schmitt trigger is implemented and simulated using 28nm CMOS process and synopsys custom compiler.
 
@@ -84,19 +97,6 @@ A 1V DC source is used for powering the device and a pulse source with a very hi
 ![](docs/testbench.png)
 
 ---
-
-## Results
-
-When simulated, the waveform came up as expected, and as follows
-
-![](docs/waveform.png)
-
-Hysteris effect of the schmitt trigger can be seen by chaning the x axis used for plotting to the input. The result was
-
-![](docs/hysterisis.png)
-
----
-
 ## Netlist
 
 #### Schmitt trigger component
@@ -152,6 +152,18 @@ MM5 net15 Vin gnd gnd! n105 w=0.1u l=0.03u nf=1 m=1
 MM4 Vout Vin net15 gnd! n105 w=0.1u l=0.03u nf=1 m=1
 .ends cp_schmitt  
 ```
+
+---
+
+## Results
+
+When simulated, the waveform came up as expected, and as follows
+
+![](docs/waveform.png)
+
+Hysteris effect of the schmitt trigger can be seen by chaning the x axis used for plotting to the input. The result was
+
+![](docs/hysterisis.png)
 
 ---
 
