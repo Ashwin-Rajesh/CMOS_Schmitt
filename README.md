@@ -14,6 +14,7 @@ Analog design and simulation of a CMOS Schmitt trigger using synopsys custom des
 - Results
 - Conclusion
 - Acknowledgements
+- References
 
 ---
 
@@ -32,6 +33,8 @@ It does this by having two different threshold points that depend on the current
 However, in a schmitt trigger, if the ouput signal flips from low to high or wise versa, the threshold also changes. So, a much higher noise signal amplitude is need to cause fluctuations.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Smitt_hysteresis_graph.svg/500px-Smitt_hysteresis_graph.svg.png)
+
+(Image above is from wikipedia [4])
 
 Here, an inverting CMOS Schmitt trigger is implemented using 28nm process and simulated using synopsys custom compiler tool
 
@@ -194,3 +197,10 @@ Hysteris effect of the schmitt trigger can be seen by chaning the x axis used fo
 - Team at "cloud based analog design hacakthon 2022, IITH"
 
 ---
+
+## References
+
+1) I. Filanovsky and H. Baltes, “*Cmos schmitt trigger design*”IEEE Trans-actions on Circuits and Systems I: Fundamental Theory and Applications,vol. 41, no. 1, pp. 46–49, 1994.
+2) S.-L. Chen and M.-D. Ker, “*A new schmitt trigger circuit in a 0.13-μm1/2.5-v cmos process to receive 3.3-v input signals*”Circuits and SystemsII: Express Briefs, IEEE Transactions on, vol. 52, pp. 361 – 365, 08 2005.
+3) L. A. Pasini Melek, A. L. da Silva, M. C. Schneider, and C. Galup-Montoro, “*Analysis and design of the classical cmos schmitt trigger insubthreshold operation*”IEEE Transactions on Circuits and Systems I:Regular Papers, vol. 64, no. 4, pp. 869–878, 2017
+4) Schmitt Trigger, Wikipedia
