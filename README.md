@@ -130,7 +130,7 @@ MM4 Vout Vin net15 gnd! n105 w=0.1u l=0.03u nf=1 m=1
 
 ```
 *Custom Compiler Version S-2021.09
-*Tue Mar  1 15:54:44 2022
+*Tue Mar  1 15:55:49 2022
 
 *.SCALE METER
 *.LDD
@@ -142,15 +142,28 @@ MM4 Vout Vin net15 gnd! n105 w=0.1u l=0.03u nf=1 m=1
 * View Search List : auCdl schematic
 * View Stop List   : auCdl
 ********************************************************************************
-.subckt cp_schmitt Vin Vout Vss gnd gnd! vdd!
-*.PININFO Vin:I Vout:O Vss:I gnd:I gnd!:B vdd!:B
-MM8 gnd Vout net7 vdd! p105 w=0.1u l=0.03u nf=1 m=1
-MM2 Vout Vin net7 vdd! p105 w=0.1u l=0.03u nf=1 m=1
-MM0 net7 Vin Vss vdd! p105 w=0.1u l=0.03u nf=1 m=1
-MM9 net15 Vout Vss gnd! n105 w=0.1u l=0.03u nf=1 m=1
-MM5 net15 Vin gnd gnd! n105 w=0.1u l=0.03u nf=1 m=1
-MM4 Vout Vin net15 gnd! n105 w=0.1u l=0.03u nf=1 m=1
-.ends cp_schmitt  
+.subckt cp_schmitt Vin Vout Vss gnd vt_bulk_n_gnd! vt_bulk_p_vdd!
+*.PININFO Vin:I Vout:O Vss:I gnd:I vt_bulk_n_gnd!:B vt_bulk_p_vdd!:B
+MM8 gnd Vout net7 vt_bulk_p_vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM2 Vout Vin net7 vt_bulk_p_vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM0 net7 Vin Vss vt_bulk_p_vdd! p105 w=0.1u l=0.03u nf=1 m=1
+MM9 net15 Vout Vss vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM5 net15 Vin gnd vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+MM4 Vout Vin net15 vt_bulk_n_gnd! n105 w=0.1u l=0.03u nf=1 m=1
+.ends cp_schmitt
+
+********************************************************************************
+* Library          : cp_lib1
+* Cell             : testbench
+* View             : schematic
+* View Search List : auCdl schematic
+* View Stop List   : auCdl
+********************************************************************************
+.subckt testbench gnd! vdd!
+*.PININFO gnd!:B vdd!:B
+XI0 net7 net9 net5 gnd! gnd! vdd! cp_schmitt
+CC5 net9 gnd! 1p $[CP]
+.ends testbench
 ```
 
 ---
